@@ -1,0 +1,54 @@
+@baseUrl = http://localhost:3000
+@contentType =application/json
+
+# @name conta
+POST {{baseUrl}}/api/v1/account HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "name": "Nubank"
+}
+
+###
+@idConta = {{conta.response.body.id}}
+GET {{baseUrl}}/api/v1/account/{{idConta}} HTTP/1.1
+
+###
+
+DELETE {{baseUrl}}/api/v1/account/{{idConta}} HTTP/1.1
+
+###
+# @name categoria
+POST {{baseUrl}}/api/v1/category HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "name": "Educação",
+  "type": "expense"
+}
+
+###
+
+@idCategoria = {{categoria.response.body.id}}
+
+GET {{baseUrl}}/api/v1/category/{{idCategoria}} HTTP/1.1
+
+###
+
+DELETE {{baseUrl}}/api/v1/category/{{idCategoria}} HTTP/1.1
+
+###
+
+# CRIAÇÃO DE TRANSAÇÃO
+POST {{baseUrl}}/api/v1/transaction HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "account": "{{idConta}}",
+  "category": "{{idCategoria}}",
+  "description": "Mensalidade Faculdade",
+  "value": 700
+}
+
+###
+GET http://localhost:3000/api/v1/report/ HTTP/1.1
