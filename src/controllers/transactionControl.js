@@ -1,18 +1,18 @@
-import {
+const {
   insertTransaction,
   fetchTransactionInformation,
   deleteTransactionService
-} from '../services/transaction'
+} = require('../services/transaction')
 
-export const registerTransaction = async (req, reply) => {
+const registerTransaction = async (req, reply) => {
   const { body } = req
 
   const { _id: id } = await insertTransaction(body)
 
-  return reply.code(201).send({ message: 'Transação criada com sucesso', id })
+  return reply.code(201).send({ message: 'Transaction successfully removed', id })
 }
 
-export const fetchTransactionInfo = async (req, reply) => {
+const fetchTransactionInfo = async (req, reply) => {
   const { id } = req.params
 
   const result = await fetchTransactionInformation(id)
@@ -20,10 +20,16 @@ export const fetchTransactionInfo = async (req, reply) => {
   return reply.code(200).send(result)
 }
 
-export const deleteTransaction = async (req, reply) => {
+const deleteTransaction = async (req, reply) => {
   const { id } = req.params
 
   await deleteTransactionService(id)
 
-  return reply.code(200).send({ message: 'Transação removida com sucesso' })
+  return reply.code(200).send({ message: 'Transaction created successfully' })
 }
+
+module.exports = { 
+  registerTransaction,
+  fetchTransactionInfo,
+  deleteTransaction
+ } 

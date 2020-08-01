@@ -1,4 +1,4 @@
-import openApi from 'fastify-oas'
+const openApi = require('fastify-oas')
 
 const createSwagger = async instance => {
   const options = {
@@ -19,4 +19,4 @@ const createSwagger = async instance => {
   instance.register(openApi, options)
 }
 
-export default createSwagger
+module.exports =  createSwagger

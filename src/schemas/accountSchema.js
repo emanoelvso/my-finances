@@ -1,4 +1,4 @@
-import { errorResponse } from './sharedSchemas'
+const { errorResponse } = require('./sharedSchemas')
 
 const properties = {
   name: { type: 'string' },
@@ -7,32 +7,31 @@ const properties = {
   expensesAmount: { type: 'number' }
 }
 
-export const createAccount = {
+const createAccount = {
   body: {
     type: 'object',
     required: ['name'],
     properties
   },
   response: {
-    '2xx': {
+    '201': {
       type: 'object',
       properties: {
         message: { type: 'string' },
         id: { type: 'string' }
       }
-    },
-    ...errorResponse
+    }
   }
 }
 
-export const deleteAccountInfoSchema = {
+const deleteAccountInfoSchema = {
   querystring: {
     id: {
       type: 'string'
     }
   },
   response: {
-    '2xx': {
+    '200': {
       type: 'object',
       properties: {
         message: { type: 'string' }
@@ -42,17 +41,23 @@ export const deleteAccountInfoSchema = {
   }
 }
 
-export const fetchAccountInfoSchema = {
+const fetchAccountInfoSchema = {
   querystring: {
     id: {
       type: 'string'
     }
   },
   response: {
-    '2xx': {
+    '200': {
       type: 'object',
       properties
     }
   },
   ...errorResponse
 }
+
+module.exports = { 
+  createAccount,
+  deleteAccountInfoSchema,
+  fetchAccountInfoSchema
+ } 

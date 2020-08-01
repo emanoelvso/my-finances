@@ -1,6 +1,6 @@
-import { fetchReportInfo } from '../controllers/reportControl'
+const { fetchReportInfo } = require('../controllers/reportControl')
 
-import { fetchReportInfoSchema } from '../schemas/reportSchema'
+const { fetchReportInfoSchema } = require('../schemas/reportSchema')
 
 const createReportRouter = async instance => {
   instance.route({
@@ -11,4 +11,4 @@ const createReportRouter = async instance => {
   })
 }
 
-export default createReportRouter
+module.exports =  createReportRouter

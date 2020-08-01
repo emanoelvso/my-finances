@@ -1,6 +1,6 @@
-import Account from '../models/account'
+const Account = require('../models/account')
 
-export const fetchReportInformation = async () => {
+const fetchReportInformation = async () => {
   const accounts = await Account.find({})
 
   if (accounts.length) {
@@ -25,3 +25,5 @@ export const fetchReportInformation = async () => {
     savingPercentage: 0
   }
 }
+
+module.exports = { fetchReportInformation } 

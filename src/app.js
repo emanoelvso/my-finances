@@ -1,27 +1,25 @@
-import fastify from 'fastify'
-import fp from 'fastify-plugin'
-import fastifyCors from 'fastify-cors'
-import fastifyHelmet from 'fastify-helmet'
+const fastify = require('fastify')
+const fp = require('fastify-plugin')
+const fastifyHelmet = require('fastify-helmet')
 
-import log from './utils/logger'
-import appConnection from './plugins/database'
-import openapi from './plugins/openApi'
-import apiv1Routes from './routes/apiV1'
-import notFoundHandler from './plugins/notFoundHandler'
+const log = require('./utils/logger')
+const appConnection = require('./plugins/database')
+const openapi = require('./plugins/openApi')
+const apiv1Routes = require('./routes/apiV1')
+const notFoundHandler = require('./plugins/notFoundHandler')
+const cors = require('cors')
 
-const defaultConfig = {
+const app = fastify({
   logger: log,
   disableRequestLogging: true,
   ignoreTrailingSlash: true
-}
+})
 
-const app = fastify(defaultConfig)
-
+app.use(cors({ origin: '*', optionsSuccessStatus: 200 }))
 app.setNotFoundHandler(notFoundHandler)
 app.register(fp(appConnection))
 app.register(fp(openapi))
-app.register(fastifyCors)
 app.register(fastifyHelmet)
 app.register(apiv1Routes, { prefix: '/api/v1' })
 
-export default app
+module.exports = app

@@ -1,36 +1,35 @@
-import { errorResponse } from './sharedSchemas'
+const { errorResponse } = require('./sharedSchemas')
 
 const properties = {
   name: { type: 'string' },
   type: { type: 'string' }
 }
 
-export const createCategory = {
+const createCategory = {
   body: {
     type: 'object',
     required: ['name', 'type'],
     properties
   },
   response: {
-    '2xx': {
+    '201': {
       type: 'object',
       properties: {
         message: { type: 'string' },
         id: { type: 'string' }
       }
     },
-    ...errorResponse
   }
 }
 
-export const deleteCategoryInfoSchema = {
+const deleteCategoryInfoSchema = {
   querystring: {
     id: {
       type: 'string'
     }
   },
   response: {
-    '2xx': {
+    '200': {
       type: 'object',
       properties: {
         message: { type: 'string' }
@@ -40,17 +39,23 @@ export const deleteCategoryInfoSchema = {
   }
 }
 
-export const fetchCategoryInfoSchema = {
+const fetchCategoryInfoSchema = {
   querystring: {
     id: {
       type: 'string'
     }
   },
   response: {
-    '2xx': {
+    '200': {
       type: 'object',
       properties
     }
   },
   ...errorResponse
 }
+
+module.exports = { 
+  createCategory,
+  deleteCategoryInfoSchema,
+  fetchCategoryInfoSchema
+ } 

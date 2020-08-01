@@ -1,6 +1,6 @@
-import Transaction from '../models/transaction'
+const Transaction = require('../models/transaction')
 
-export const balanceService = async account => {
+const balanceService = async account => {
   const allTransactions = await Transaction.find({ account: account.name })
 
   const { incomeAmount, expensesAmount } = allTransactions.reduce(
@@ -31,3 +31,5 @@ export const balanceService = async account => {
     balance
   }
 }
+
+module.exports = { balanceService }

@@ -1,5 +1,5 @@
-import log from '../utils/logger'
-import { ApplicationError } from '../definitions/Errors'
+const log = require('../utils/logger')
+const { ApplicationError } = require('../definitions/Errors')
 
 const errorMiddleware = (error, req, reply) => {
   if (error instanceof ApplicationError) {
@@ -21,4 +21,4 @@ const errorMiddleware = (error, req, reply) => {
     .send({ code: error.statusCode, message: error && error.message })
 }
 
-export default errorMiddleware
+module.exports =  errorMiddleware

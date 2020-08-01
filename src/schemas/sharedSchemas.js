@@ -1,4 +1,4 @@
-export const errorResponse = {
+const errorResponse = {
   404: {
     type: 'object',
     properties: {
@@ -7,3 +7,5 @@ export const errorResponse = {
     }
   }
 }
+
+module.exports = { errorResponse } 

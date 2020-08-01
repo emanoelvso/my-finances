@@ -1,7 +1,7 @@
-import pino from 'pino'
+const pino = require('pino')
 
 const createLogger = () => {
   return pino({ prettyPrint: true })
 }
 
-export default createLogger()
+module.exports =  createLogger()
