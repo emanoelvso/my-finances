@@ -1,6 +1,6 @@
-import app from './app.js'
-import config from './config/global'
-import log from './utils/logger'
+const app = require('./app.js')
+const config = require('./config/global')
+const log = require('./utils/logger')
 
 process.on('uncaughtException', error => {
   log.error(`UncaughtException event: ${error && error.message}`, {

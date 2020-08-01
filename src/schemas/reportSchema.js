@@ -1,11 +1,11 @@
-import { errorResponse } from './sharedSchemas'
+const { errorResponse } = require('./sharedSchemas')
 
 const properties = {
   balance: { type: 'number' },
   savingPercentage: { type: 'number' }
 }
 
-export const fetchReportInfoSchema = {
+const fetchReportInfoSchema = {
   response: {
     '200': {
       type: 'object',
@@ -14,3 +14,5 @@ export const fetchReportInfoSchema = {
   },
   ...errorResponse
 }
+
+module.exports = { fetchReportInfoSchema } 

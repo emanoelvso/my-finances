@@ -1,7 +1,9 @@
-import { fetchReportInformation } from '../services/reportService'
+const { fetchReportInformation } = require('../services/reportService')
 
-export const fetchReportInfo = async (req, reply) => {
+const fetchReportInfo = async (req, reply) => {
   const result = await fetchReportInformation()
 
   reply.code(200).send(result)
 }
+
+module.exports = { fetchReportInfo } 

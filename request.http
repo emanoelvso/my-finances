@@ -23,7 +23,7 @@ POST {{baseUrl}}/api/v1/category HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "name": "Educação",
+  "name": "Education",
   "type": "expense"
 }
 
@@ -44,10 +44,10 @@ POST {{baseUrl}}/api/v1/transaction HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "account": "{{idConta}}",
-  "category": "{{idCategoria}}",
-  "description": "Mensalidade Faculdade",
-  "value": 700
+  "account": "5f25773b87b0232bd48ba82e",
+  "category": "5f2577ab87b0232bd48ba831",
+  "description": "College",
+  "value": 200
 }
 
 ###

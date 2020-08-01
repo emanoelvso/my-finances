@@ -1,14 +1,14 @@
-import {
+const {
   fetchTransactionInfo,
   registerTransaction,
   deleteTransaction
-} from '../controllers/transactionControl'
+} = require('../controllers/transactionControl')
 
-import {
+const {
   createTransactionInfoSchema,
   fetchTransactionInfoSchema,
   deleteTransactionInfoSchema
-} from '../schemas/transactionSchema'
+} = require('../schemas/transactionSchema')
 
 const createTransactionRouter = async instance => {
   instance.route({
@@ -31,4 +31,4 @@ const createTransactionRouter = async instance => {
   })
 }
 
-export default createTransactionRouter
+module.exports =  createTransactionRouter

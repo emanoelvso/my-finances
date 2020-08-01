@@ -1,14 +1,14 @@
-import {
+const {
   fetchCategoryInfo,
   registerCategory,
   deleteCategory
-} from '../controllers/categoryControl'
+} = require('../controllers/categoryControl')
 
-import {
+const {
   fetchCategoryInfoSchema,
   createCategory,
   deleteCategoryInfoSchema
-} from '../schemas/categorySchema'
+} = require('../schemas/categorySchema')
 
 const createCategoryRouter = async instance => {
   instance.route({
@@ -33,4 +33,4 @@ const createCategoryRouter = async instance => {
   })
 }
 
-export default createCategoryRouter
+module.exports =  createCategoryRouter

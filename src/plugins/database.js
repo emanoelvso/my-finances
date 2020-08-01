@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
-import config from '../config/global'
-import log from '../utils/logger'
+const mongoose = require('mongoose')
+const config = require('../config/global')
+const log = require('../utils/logger')
 
 const createConnection = async instance => {
   const defaultConfig = {
@@ -17,4 +17,4 @@ const createConnection = async instance => {
   instance.decorate('conn', connection)
 }
 
-export default createConnection
+module.exports = createConnection

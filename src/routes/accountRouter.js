@@ -1,14 +1,14 @@
-import {
+const {
   fetchAccountInfo,
   registerAccount,
   deleteAccount
-} from '../controllers/accountControl'
+} = require('../controllers/accountControl')
 
-import {
+const {
   fetchAccountInfoSchema,
   createAccount,
   deleteAccountInfoSchema
-} from '../schemas/accountSchema'
+} = require('../schemas/accountSchema')
 
 const createAccountRouter = async instance => {
   instance.route({
@@ -40,4 +40,4 @@ const createAccountRouter = async instance => {
   })
 }
 
-export default createAccountRouter
+module.exports =  createAccountRouter

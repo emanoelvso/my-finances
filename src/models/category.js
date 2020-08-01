@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const types = ['expense', 'income']
 
@@ -24,4 +24,4 @@ const Category = new mongoose.Schema(
   }
 )
 
-export default mongoose.model('Category', Category)
+module.exports =  mongoose.model('Category', Category)

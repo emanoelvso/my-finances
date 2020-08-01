@@ -1,18 +1,18 @@
-import {
+const {
   fetchCategoryInformation,
   insertCategory,
   deleteCategoryService
-} from '../services/categoryServices'
+} = require('../services/categoryServices')
 
-export const registerCategory = async (req, reply) => {
+const registerCategory = async (req, reply) => {
   const { body } = req
 
   const { _id: id } = await insertCategory(body)
 
-  return reply.code(201).send({ message: 'Categoria criada com sucesso', id })
+  return reply.code(201).send({ message: 'Category created successfully', id })
 }
 
-export const fetchCategoryInfo = async (req, reply) => {
+const fetchCategoryInfo = async (req, reply) => {
   const { id } = req.params
 
   const result = await fetchCategoryInformation(id)
@@ -20,10 +20,16 @@ export const fetchCategoryInfo = async (req, reply) => {
   return reply.code(200).send(result)
 }
 
-export const deleteCategory = async (req, reply) => {
+const deleteCategory = async (req, reply) => {
   const { id } = req.params
 
   await deleteCategoryService(id)
 
-  return reply.code(200).send({ message: 'Categoria removida com sucesso' })
+  return reply.code(200).send({ message: 'Category removed successfully' })
 }
+
+module.exports = { 
+  registerCategory,
+  fetchCategoryInfo,
+  deleteCategory
+ } 

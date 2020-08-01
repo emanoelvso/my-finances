@@ -1,4 +1,4 @@
-import 'dotenv/config'
+require('dotenv/config')
 
 const { PORT, DB_URI } = process.env
 
@@ -9,4 +9,4 @@ const config = {
   }
 }
 
-export default config
+module.exports =  config
