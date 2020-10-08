@@ -40,4 +40,4 @@ const createAccountRouter = async instance => {
   })
 }
 
-module.exports =  createAccountRouter
+module.exports = createAccountRouter

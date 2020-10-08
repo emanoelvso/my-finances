@@ -1,13 +1,15 @@
 FROM node:12-alpine
 
-WORKDIR /my-finances
+ENV HOME=/home/app
 
-EXPOSE 3000
+WORKDIR $HOME/my-finances
 
-COPY ["package.json", "./"]
+COPY package.json package-lock.json $HOME/my-finances/
 
-RUN npm install --production
+RUN npm install --production --silent --progress=false
 
 COPY . .
 
-CMD ["node", "./src/server.js"]
+EXPOSE 3000
+
+CMD ["npm", "start"]

@@ -28,4 +28,4 @@ const deleteAccount = async (req, reply) => {
   return reply.code(200).send({ message: 'Account successfully removed' })
 }
 
-module.exports = { registerAccount, fetchAccountInfo, deleteAccount } 
+module.exports = { registerAccount, fetchAccountInfo, deleteAccount }
